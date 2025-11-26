@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Estátuas - Umamusume Pretty Derby</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>Star Unlock Grade</h1>
+        </div>
+
+        <div class="game-content">
+            <div class="stars-section">
+                <div class="stars-display">
+                    <div class="star-row current-row">
+                        <div class="stars-container" id="currentStarsDisplay">
+                            <span class="star filled"></span>
+                            <span class="star empty"></span>
+                            <span class="star empty"></span>
+                            <span class="star empty"></span>
+                            <span class="star empty"></span>
+                        </div>
+                    </div>
+                    <div class="arrow-down">
+                        <img src="assets/icons/utx_ico_singleteam_arrow_00.png" alt="Arrow" class="arrow-icon">
+                    </div>
+                    <div class="star-row target-row">
+                        <button class="nav-btn" id="prevStar">
+                            <img src="assets/icons/utx_btn_arrow_side_03.png" alt="Previous" class="nav-arrow prev-arrow">
+                        </button>
+                        <div class="stars-container" id="targetStarsDisplay">
+                            <span class="star filled"></span>
+                            <span class="star filled"></span>
+                            <span class="star target"></span>
+                            <span class="star empty"></span>
+                            <span class="star empty"></span>
+                        </div>
+                        <button class="nav-btn" id="nextStar">
+                            <img src="assets/icons/utx_btn_arrow_side_03.png" alt="Next" class="nav-arrow next-arrow">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <div class="progress-label">
+                    <span>Star Pieces</span>
+                    <span class="progress-text" id="progressText">0 / 50</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+                <div class="error-message" id="errorMessage" style="display: none;">
+                    Not enough Star Pieces.
+                </div>
+            </div>
+
+            <div class="config-section">
+                <div class="config-group">
+                    <label for="currentStarPieces">Current Star Pieces:</label>
+                    <input type="number" id="currentStarPieces" min="0" value="0">
+                </div>
+                <div class="config-group">
+                    <label for="currentStatues">Current Statues:</label>
+                    <input type="number" id="currentStatues" min="0" value="0">
+                </div>
+                <div class="config-group-row">
+                    <div class="config-group">
+                        <label for="currentCost">Current Cost Ratio:</label>
+                        <select id="currentCost">
+                            <option value="1">1:1</option>
+                            <option value="2">2:1</option>
+                            <option value="3">3:1</option>
+                            <option value="4">4:1</option>
+                            <option value="5">5:1</option>
+                        </select>
+                    </div>
+                    <div class="config-group">
+                        <label for="remainingAtCost">Remaining at Current Cost (1-25):</label>
+                        <input type="number" id="remainingAtCost" min="1" max="25" value="25">
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <div class="result-item">
+                    <span class="result-label">For Next Star:</span>
+                    <span class="result-value" id="nextStarResult">0</span>
+                    <span class="result-unit">Statues</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">For Max (5⭐):</span>
+                    <span class="result-value" id="maxStarResult">0</span>
+                    <span class="result-unit">Statues</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

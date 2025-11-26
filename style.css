@@ -1,0 +1,416 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #fff;
+}
+
+.game-container {
+    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Header verde como no jogo */
+.game-header {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    padding: 15px 20px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.game-header h1 {
+    color: #fff;
+    font-size: 1.3em;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.game-content {
+    padding: 25px;
+}
+
+/* Seção de estrelas */
+.stars-section {
+    margin-bottom: 25px;
+}
+
+.stars-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.arrow-down {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.arrow-icon {
+    width: 24px;
+    height: 24px;
+    transform: rotate(180deg);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.star-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    width: 100%;
+}
+
+.current-row {
+    justify-content: center;
+}
+
+.target-row {
+    justify-content: center;
+    position: relative;
+}
+
+.stars-container {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.current-row .star {
+    width: 24px;
+    height: 24px;
+}
+
+.target-row .star {
+    width: 32px;
+    height: 32px;
+}
+
+.star {
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.2s;
+    cursor: pointer;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.star:hover {
+    transform: scale(1.2);
+}
+
+.star.filled {
+    background-image: url('assets/icons/utx_ico_strong_star_00.png');
+}
+
+.star.target {
+    background-image: url('assets/icons/utx_ico_strong_star_00.png');
+    filter: drop-shadow(0 0 10px rgba(217, 119, 6, 0.8)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.star.empty {
+    background-image: url('assets/icons/utx_ico_strong_star_01.png');
+    opacity: 0.7;
+}
+
+.nav-btn {
+    background: rgba(72, 187, 120, 0.2);
+    border: 2px solid #48bb78;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    padding: 5px;
+}
+
+.nav-btn:hover {
+    background: rgba(72, 187, 120, 0.4);
+    border-color: #38a169;
+}
+
+.nav-btn:active {
+    transform: scale(0.95);
+}
+
+.nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.nav-arrow {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.prev-arrow {
+    transform: rotate(180deg);
+}
+
+
+/* Barra de progresso */
+.progress-section {
+    margin-bottom: 25px;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #cbd5e0;
+    align-items: center;
+}
+
+.statue-icon-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.statue-icon-small {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.progress-text {
+    color: #48bb78;
+}
+
+.progress-bar-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    height: 25px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #48bb78 0%, #38a169 100%);
+    border-radius: 10px;
+    transition: width 0.3s ease;
+    width: 0%;
+    box-shadow: 0 0 10px rgba(72, 187, 120, 0.5);
+}
+
+.error-message {
+    color: #fc8181;
+    font-size: 0.9em;
+    text-align: center;
+    padding: 5px;
+}
+
+/* Configurações */
+.config-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.config-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.config-group-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    grid-column: 1 / -1;
+}
+
+.config-group label {
+    font-size: 0.85em;
+    color: #a0aec0;
+    font-weight: 500;
+}
+
+.config-group input,
+.config-group select {
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: #fff;
+    font-size: 1em;
+    transition: border-color 0.3s;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.config-group select option {
+    background: #2d3748;
+    color: #fff;
+    padding: 10px;
+}
+
+.config-group input:focus,
+.config-group select:focus {
+    outline: none;
+    border-color: #48bb78;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Remover spinners dos campos Current Star Pieces e Current Statues */
+#currentStarPieces::-webkit-inner-spin-button,
+#currentStarPieces::-webkit-outer-spin-button,
+#currentStatues::-webkit-inner-spin-button,
+#currentStatues::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#currentStarPieces[type=number],
+#currentStatues[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Estilizar spinners do Remaining at Current Cost */
+#remainingAtCost::-webkit-inner-spin-button,
+#remainingAtCost::-webkit-outer-spin-button {
+    opacity: 1;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    background: transparent !important;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+#remainingAtCost::-webkit-inner-spin-button {
+    margin-right: 5px;
+    background-image: none;
+}
+
+#remainingAtCost::-webkit-outer-spin-button {
+    margin-left: 5px;
+    background-image: none;
+}
+
+.config-group input::placeholder {
+    color: #718096;
+}
+
+/* Resultados */
+.results-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.result-item {
+    background: rgba(72, 187, 120, 0.1);
+    border: 2px solid rgba(72, 187, 120, 0.3);
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.result-label {
+    font-size: 0.9em;
+    color: #a0aec0;
+}
+
+.result-value {
+    font-size: 2em;
+    font-weight: bold;
+    color: #48bb78;
+    text-shadow: 0 0 10px rgba(72, 187, 120, 0.5);
+}
+
+.result-unit {
+    font-size: 0.8em;
+    color: #718096;
+}
+
+/* Botão Star Unlock */
+.star-unlock-btn {
+    width: 100%;
+    background-image: url('assets/icons/utx_frm_factor_list_04_sl.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    color: white;
+    padding: 18px;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px rgba(72, 187, 120, 0.3);
+}
+
+.star-unlock-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(72, 187, 120, 0.4);
+}
+
+.star-unlock-btn:active {
+    transform: translateY(0);
+}
+
+.star-unlock-btn:disabled {
+    background: #4a5568;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+@media (max-width: 600px) {
+    .game-content {
+        padding: 15px;
+    }
+
+    .config-section {
+        grid-template-columns: 1fr;
+    }
+
+    .results-section {
+        grid-template-columns: 1fr;
+    }
+
+}
