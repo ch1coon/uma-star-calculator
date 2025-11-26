@@ -32,26 +32,6 @@ The cost of converting statues to Star Pieces increases progressively:
 - Next 25 Star Pieces: 100 statues (4:1)
 - After that: 5 statues per Star Piece (5:1)
 
-## 🎨 Game Assets
-
-The calculator uses game assets for icons:
-- Star icons (filled and empty)
-- Statue icons
-- Button backgrounds
-- Navigation arrows
-
-Place additional assets in the `assets/` folder as needed.
-
-## 🚀 How to Host on GitHub Pages
-
-1. Commit and push this repository to GitHub
-2. Go to Settings > Pages
-3. Select the `main` branch (or `master`)
-4. Select the `/root` folder
-5. Save and wait a few minutes
-
-Your calculator will be available at: `https://your-username.github.io/uma-star-calculator/`
-
 ## 📝 License
 
 This project is open source and available for free use.
