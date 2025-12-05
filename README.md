@@ -1,6 +1,8 @@
 # ⭐ Star Pieces Calculator - Umamusume Pretty Derby
 
 A game-inspired calculator to determine how many statues are needed to evolve a character in Umamusume Pretty Derby.
+Link:
+https://ch1coon.github.io/uma-star-calculator/
 
 ## 🎮 How to Use
 
